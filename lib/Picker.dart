@@ -47,7 +47,7 @@ class Picker {
   final String confirmText;
 
   final double height;
-
+  final String unit;
   /// Height of list item
   final double itemExtent;
 
@@ -86,6 +86,7 @@ class Picker {
       {this.adapter,
         this.delimiter,
         this.selecteds,
+        this.unit,
         this.height = 150.0,
         this.itemExtent = 28.0,
         this.columnPadding,
@@ -288,7 +289,7 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
     if (scrollController.length == 0) {
       for (int i = 0; i < picker._maxLevel; i++) {
         scrollController.add(
-            FixedExtentScrollController(initialItem: picker.selecteds[i]));
+            FixedExtentScrollController(initialItem: picker.selecteds[i]+ picker.unit));
         _keys.add(GlobalKey(debugLabel: i.toString()));
       }
     }
